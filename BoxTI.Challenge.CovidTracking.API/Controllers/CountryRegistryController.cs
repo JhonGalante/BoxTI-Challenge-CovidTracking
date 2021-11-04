@@ -9,61 +9,71 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
     [ApiController]
     public class CountryRegistryController : ControllerBase
     {
-        private readonly IBaseService<CountryRegistry> _service;
+        private readonly IExternalCovidService _serviceCovid;
 
-        public CountryRegistryController(IBaseService<CountryRegistry> service)
+        public CountryRegistryController(IExternalCovidService serviceCovid)
         {
-            _service = service;
+            _serviceCovid = serviceCovid;
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] CountryRegistry countryRegistry)
+        //[HttpPost]
+        //public IActionResult Create([FromBody] CountryRegistry countryRegistry)
+        //{
+        //    if(countryRegistry == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Execute(() => _service.Add(countryRegistry).Id);
+        //}
+
+        //[HttpPut]
+        //public IActionResult Update([FromBody] CountryRegistry countryRegistry)
+        //{
+        //    if (countryRegistry == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Execute(() => _service.Update(countryRegistry));
+        //}
+
+        //[HttpDelete]
+        //public IActionResult Delete(int id)
+        //{
+        //    if (id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    Execute(() => {
+        //        _service.Delete(id);
+        //        return true;
+        //    });
+        //    return new NoContentResult();
+        //}
+
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    return Execute(() => _service.Get());
+        //}
+
+        //[HttpGet]
+        //public IActionResult GetById(int id)
+        //{
+        //    if(id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Execute(() => _service.GetById(id));
+        //}
+
+        [HttpGet("covidRegistry/{name}")]
+        public IActionResult GetCovidRegistry(string name)
         {
-            if(countryRegistry == null)
+            if (name.Length == 0)
             {
                 return NotFound();
             }
-            return Execute(() => _service.Add(countryRegistry).Id);
-        }
-
-        [HttpPut]
-        public IActionResult Update([FromBody] CountryRegistry countryRegistry)
-        {
-            if (countryRegistry == null)
-            {
-                return NotFound();
-            }
-            return Execute(() => _service.Update(countryRegistry));
-        }
-
-        [HttpDelete]
-        public IActionResult Delete(int id)
-        {
-            if (id == 0)
-            {
-                return NotFound();
-            }
-            Execute(() => {
-                _service.Delete(id);
-                return true;
-            });
-            return new NoContentResult();
-        }
-
-        [HttpGet]
-        public IActionResult Get()
-        {
-            return Execute(() => _service.Get());
-        }
-
-        [HttpGet]
-        public IActionResult GetById(int id)
-        {
-            if(id == 0)
-            {
-                return NotFound();
-            }
-            return Execute(() => _service.GetById(id));
+            return Execute(() => _serviceCovid.getCountryCovidRegistry(name));
         }
 
         private IActionResult Execute(Func<object> func)
