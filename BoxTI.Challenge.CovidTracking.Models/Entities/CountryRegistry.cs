@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace BoxTI.Challenge.CovidTracking.Models.Entities
 {

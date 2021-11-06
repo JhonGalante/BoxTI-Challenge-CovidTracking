@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BoxTI.Challenge.CovidTracking.Data.Migrations
 {
-    public partial class InitialCountryRegistry : Migration
+    public partial class CountryRegistryInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

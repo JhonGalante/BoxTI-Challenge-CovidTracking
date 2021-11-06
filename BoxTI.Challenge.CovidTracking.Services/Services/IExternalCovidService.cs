@@ -1,4 +1,5 @@
 ﻿using BoxTI.Challenge.CovidTracking.Models.Entities;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
