@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.Services.Services
 {
-    public interface IExternalCovidService
+    public interface ICovidService
     {
-        Task<CountryRegistry> getCountryCovidRegistry(string name);
+        Task<JArray> getCountryCovidRegistry();
+        Task<string> SaveCountriesRegistry();
     }
 }

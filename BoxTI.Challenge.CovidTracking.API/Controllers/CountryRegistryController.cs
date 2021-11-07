@@ -2,6 +2,7 @@
 using BoxTI.Challenge.CovidTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.API.Controllers
@@ -10,28 +11,22 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
     [ApiController]
     public class CountryRegistryController : ControllerBase
     {
-        private readonly IExternalCovidService _serviceCovid;
+        private readonly ICovidService _serviceCovid;
 
-        public CountryRegistryController(IExternalCovidService serviceCovid)
+        public CountryRegistryController(ICovidService serviceCovid)
         {
             _serviceCovid = serviceCovid;
         }
 
-        [HttpGet("covidRegistry/{name}")]
-        public async Task<IActionResult> GetCovidRegistry(string name)
+        [HttpGet("saveCountriesRegistry")]
+        public async Task<IActionResult> SaveCountriesRegistry()
         {
             try
             {
-                if (name.Length == 0)
-                {
-                    return NotFound();
-                }
-
-                return Ok(await _serviceCovid.getCountryCovidRegistry(name));
+                return Ok(await _serviceCovid.SaveCountriesRegistry());
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
             
