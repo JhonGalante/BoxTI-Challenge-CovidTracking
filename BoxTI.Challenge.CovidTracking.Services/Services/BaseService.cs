@@ -1,6 +1,7 @@
 ﻿using BoxTI.Challenge.CovidTracking.Data.Repository;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.Services.Services
 {
@@ -13,30 +14,30 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
             _repo = repo;
         }
 
-        public TEntity Add(TEntity obj)
+        public async Task<TEntity> Add(TEntity obj)
         {
-            _repo.Insert(obj);
+            await _repo.Insert(obj);
             return obj;
         }
 
-        public void Delete(int id)
+        public async Task Delete(TEntity obj)
         {
-            _repo.Delete(id);
+            await _repo.Delete(obj);
         }
 
-        public IList<TEntity> Get()
+        public async Task<IList<TEntity>> Get()
         {
-            return _repo.Get();
+            return await _repo.Get();
         }
 
-        public TEntity GetById(int id)
+        public async Task<TEntity> GetById(int id)
         {
-            return _repo.GetById(id);
+            return await _repo.GetById(id);
         }
 
-        public TEntity Update(TEntity obj)
+        public async Task<TEntity> Update(TEntity obj)
         {
-            _repo.Update(obj);
+            await _repo.Update(obj);
             return obj;
         }
     }

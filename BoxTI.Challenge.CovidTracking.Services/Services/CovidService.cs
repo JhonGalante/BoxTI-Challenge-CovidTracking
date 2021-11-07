@@ -61,7 +61,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
 
                 if (_crRepo.GetByName(registry["Country_text"].ToString()) == null)
                 { 
-                    _baseService.Add(
+                    await _baseService.Add(
                         new CountryRegistry
                             {
                                 Name = registry["Country_text"].ToString(),

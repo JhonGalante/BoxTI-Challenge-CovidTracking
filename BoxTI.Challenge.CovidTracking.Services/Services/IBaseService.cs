@@ -2,15 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.Services.Services
 {
     public interface IBaseService<TEntity> where TEntity : BaseEntity
     {
-        TEntity Add(TEntity obj);
-        void Delete(int id);
-        TEntity Update(TEntity obj);
-        IList<TEntity> Get();
-        TEntity GetById(int id);
+        Task<TEntity> Add(TEntity obj);
+        Task Delete(TEntity obj);
+        Task<TEntity> Update(TEntity obj);
+        Task<IList<TEntity>> Get();
+        Task<TEntity> GetById(int id);
     }
 }

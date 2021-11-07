@@ -24,7 +24,8 @@ namespace BoxTI.Challenge.CovidTracking.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ActiveCases")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("active_cases");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("datetime")

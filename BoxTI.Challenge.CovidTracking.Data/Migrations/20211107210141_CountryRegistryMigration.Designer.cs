@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoxTI.Challenge.CovidTracking.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20211106134355_CountryRegistryInitial")]
-    partial class CountryRegistryInitial
+    [Migration("20211107210141_CountryRegistryMigration")]
+    partial class CountryRegistryMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,7 +26,8 @@ namespace BoxTI.Challenge.CovidTracking.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ActiveCases")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("active_cases");
 
                     b.Property<DateTime>("LastUpdate")
                         .HasColumnType("datetime")

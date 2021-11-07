@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.Data.Repository
 {
@@ -17,31 +18,31 @@ namespace BoxTI.Challenge.CovidTracking.Data.Repository
             _context = context;
         }
 
-        public IList<TEntity> Get()
+        public async Task<IList<TEntity>> Get()
         {
-            return _context.Set<TEntity>().ToList();
+            return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public TEntity GetById(int id)
+        public async Task<TEntity> GetById(int id)
         {
-            return _context.Set<TEntity>().Find(id);
+            return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public void Insert(TEntity obj)
+        public async Task Insert(TEntity obj)
         {
-            _context.Set<TEntity>().Add(obj);
-            _context.SaveChanges();
+            await _context.Set<TEntity>().AddAsync(obj);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(TEntity obj)
+        public async Task Update(TEntity obj)
         {
             _context.Entry(obj).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
-        public void Delete(int id)
+        public async Task Delete(TEntity obj)
         {
-            _context.Set<TEntity>().Remove(GetById(id));
-            _context.SaveChanges();
+            _context.Set<TEntity>().Remove(obj);
+            await _context.SaveChangesAsync();
         }
     }
 }
