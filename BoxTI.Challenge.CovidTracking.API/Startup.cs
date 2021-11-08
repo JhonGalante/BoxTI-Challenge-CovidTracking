@@ -1,6 +1,7 @@
 using BoxTI.Challenge.CovidTracking.Data.Context;
 using BoxTI.Challenge.CovidTracking.Data.Repository;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
+using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
 using BoxTI.Challenge.CovidTracking.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,7 @@ namespace BoxTI.Challenge.CovidTracking.API
             services.AddHttpClient();
             services.AddTransient<ICovidService, CovidService>();
             services.AddTransient<IBaseService<CountryRegistry>, BaseService<CountryRegistry>>();
+            services.AddTransient<ICountryRegistryService, CountryRegistryService>();
             services.AddTransient<ICountryRegistryRepository, CountryRegistryRepository>();
             services.AddTransient<IBaseRepository<CountryRegistry>, BaseRepository<CountryRegistry>>();
 

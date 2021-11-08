@@ -1,4 +1,5 @@
 ﻿using BoxTI.Challenge.CovidTracking.Models.Entities;
+using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
 using BoxTI.Challenge.CovidTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +15,13 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
     {
         private readonly ICovidService _serviceCovid;
         private readonly IBaseService<CountryRegistry> _baseService;
+        private readonly ICountryRegistryService _crService;
 
-        public CountryRegistryController(ICovidService serviceCovid, IBaseService<CountryRegistry> baseService)
+        public CountryRegistryController(ICovidService serviceCovid, ICountryRegistryService crService, IBaseService<CountryRegistry> baseService)
         {
             _serviceCovid = serviceCovid;
             _baseService = baseService;
+            _crService = crService;
         }
 
         [HttpGet("saveCountriesRegistry")]
@@ -33,6 +36,19 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
                 return BadRequest(ex.Message);
             }
 
+        }
+
+        [HttpGet("getOrderedActiveCases")]
+        public IActionResult GetOrderedActiveCases()
+        {
+            try
+            {
+                return Ok(_crService.getOrderedByActiveCases());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
@@ -96,13 +112,12 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
             try
             {
                 await _baseService.Delete(cr);
+                return Ok();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
-            return Ok();
         }
     }
 }

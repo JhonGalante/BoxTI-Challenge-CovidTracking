@@ -8,5 +8,6 @@ namespace BoxTI.Challenge.CovidTracking.Data.Repository
     public interface ICountryRegistryRepository
     {
         CountryRegistry GetByName(string name);
+        IEnumerable<CountryRegistry> GetOrderedByActiveCases();
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.Data.Repository
 {
@@ -20,6 +21,11 @@ namespace BoxTI.Challenge.CovidTracking.Data.Repository
         public CountryRegistry GetByName(string name)
         {
             return _context.CountryRegistries.Where(c => c.Name == name).FirstOrDefault();
+        }
+
+        public IEnumerable<CountryRegistry> GetOrderedByActiveCases()
+        {
+            return _context.CountryRegistries.Where(c => c.Name != "World").OrderByDescending(c => c.ActiveCases).ToList();
         }
     }
 }
