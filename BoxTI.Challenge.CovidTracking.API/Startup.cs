@@ -2,6 +2,7 @@ using BoxTI.Challenge.CovidTracking.Data.Context;
 using BoxTI.Challenge.CovidTracking.Data.Repository;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
 using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
+using BoxTI.Challenge.CovidTracking.Services.CSVService;
 using BoxTI.Challenge.CovidTracking.Services.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,7 +13,6 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
-using System.Text.Json.Serialization;
 
 namespace BoxTI.Challenge.CovidTracking.API
 {
@@ -34,6 +34,7 @@ namespace BoxTI.Challenge.CovidTracking.API
             services.AddTransient<ICovidService, CovidService>();
             services.AddTransient<IBaseService<CountryRegistry>, BaseService<CountryRegistry>>();
             services.AddTransient<ICountryRegistryService, CountryRegistryService>();
+            services.AddTransient<ICsvService, CsvService>();
             services.AddTransient<ICountryRegistryRepository, CountryRegistryRepository>();
             services.AddTransient<IBaseRepository<CountryRegistry>, BaseRepository<CountryRegistry>>();
 
@@ -41,9 +42,9 @@ namespace BoxTI.Challenge.CovidTracking.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Copa do Mundo dos Games API - L3",
+                    Title = "BoxTI Challenge - CovidTracking",
                     Version = "v1",
-                    Description = "WebAPI da aplicação do desafio da copa do mundo dos games da Lambda3",
+                    Description = "WebAPI da aplicação do desafio da BoxTI de CovidTracking",
                     Contact = new OpenApiContact
                     {
                         Name = "Jhonata Amado Galante",
