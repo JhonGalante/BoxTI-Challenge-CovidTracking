@@ -14,36 +14,28 @@ namespace BoxTI.Challenge.CovidTracking.Data.Mappings
 
             builder.Property(p => p.Name)
                 .IsRequired()
-                .HasColumnName("country_name")
                 .HasColumnType("varchar(50)");
 
             builder.Property(p => p.LastUpdate)
                 .IsRequired()
-                .HasColumnName("last_update")
                 .HasColumnType("datetime");
 
             builder.Property(p => p.ActiveCases)
-                .HasColumnName("active_cases")
                 .HasColumnType("int");
 
             builder.Property(p => p.NewCases)
-                .HasColumnName("new_cases")
                 .HasColumnType("int");
 
             builder.Property(p => p.NewDeaths)
-                .HasColumnName("new_deaths")
                 .HasColumnType("int");
 
             builder.Property(p => p.TotalCases)
-                .HasColumnName("total_cases")
                 .HasColumnType("int");
 
             builder.Property(p => p.TotalDeaths)
-                .HasColumnName("total_deaths")
                 .HasColumnType("int");
 
             builder.Property(p => p.TotalRecovered)
-                .HasColumnName("total_recovered")
                 .HasColumnType("int");
         }
     }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoxTI.Challenge.CovidTracking.Data.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20211107210141_CountryRegistryMigration")]
-    partial class CountryRegistryMigration
+    [Migration("20211108164117_CountryRegistryMigrate")]
+    partial class CountryRegistryMigrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,37 +26,29 @@ namespace BoxTI.Challenge.CovidTracking.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ActiveCases")
-                        .HasColumnType("int")
-                        .HasColumnName("active_cases");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("LastUpdate")
-                        .HasColumnType("datetime")
-                        .HasColumnName("last_update");
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("country_name");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("NewCases")
-                        .HasColumnType("int")
-                        .HasColumnName("new_cases");
+                        .HasColumnType("int");
 
                     b.Property<int>("NewDeaths")
-                        .HasColumnType("int")
-                        .HasColumnName("new_deaths");
+                        .HasColumnType("int");
 
                     b.Property<int>("TotalCases")
-                        .HasColumnType("int")
-                        .HasColumnName("total_cases");
+                        .HasColumnType("int");
 
                     b.Property<int>("TotalDeaths")
-                        .HasColumnType("int")
-                        .HasColumnName("total_deaths");
+                        .HasColumnType("int");
 
                     b.Property<int>("TotalRecovered")
-                        .HasColumnType("int")
-                        .HasColumnName("total_recovered");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

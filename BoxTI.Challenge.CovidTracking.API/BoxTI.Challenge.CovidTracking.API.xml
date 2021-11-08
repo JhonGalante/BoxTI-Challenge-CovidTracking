@@ -32,7 +32,7 @@
             <param name="id"></param>
             <returns>Objeto CountryRegistry</returns>
         </member>
-        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.CountryRegistryController.Update(System.Int32,BoxTI.Challenge.CovidTracking.Models.Entities.CountryRegistry)">
+        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.CountryRegistryController.Put(System.Int32,BoxTI.Challenge.CovidTracking.Models.Entities.CountryRegistry)">
             <summary>
             Atualiza os dados do registro de um país do banco
             </summary>

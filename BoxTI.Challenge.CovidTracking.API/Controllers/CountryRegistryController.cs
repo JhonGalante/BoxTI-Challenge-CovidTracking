@@ -56,11 +56,11 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// </summary>
         /// <returns>Lista de Objetos CountryRegistry</returns>
         [HttpGet("getOrderedActiveCases")]
-        public IActionResult GetOrderedActiveCases()
+        public async Task<IActionResult> GetOrderedActiveCases()
         {
             try
             {
-                return Ok(_crService.getOrderedByActiveCases());
+                return Ok(await _crService.getOrderedByActiveCases());
             }
             catch (Exception ex)
             {

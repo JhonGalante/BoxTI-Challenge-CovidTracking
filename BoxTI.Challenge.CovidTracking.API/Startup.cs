@@ -1,4 +1,5 @@
 using BoxTI.Challenge.CovidTracking.Data.Context;
+using BoxTI.Challenge.CovidTracking.Data.Dapper;
 using BoxTI.Challenge.CovidTracking.Data.Repository;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
 using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
@@ -37,6 +38,7 @@ namespace BoxTI.Challenge.CovidTracking.API
             services.AddTransient<ICsvService, CsvService>();
             services.AddTransient<ICountryRegistryRepository, CountryRegistryRepository>();
             services.AddTransient<IBaseRepository<CountryRegistry>, BaseRepository<CountryRegistry>>();
+            services.AddScoped<DbSession>();
 
             services.AddSwaggerGen(c =>
             {

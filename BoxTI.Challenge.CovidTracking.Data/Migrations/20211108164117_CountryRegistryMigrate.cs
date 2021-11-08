@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BoxTI.Challenge.CovidTracking.Data.Migrations
 {
-    public partial class CountryRegistryMigration : Migration
+    public partial class CountryRegistryMigrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,15 +17,15 @@ namespace BoxTI.Challenge.CovidTracking.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    country_name = table.Column<string>(type: "varchar(50)", nullable: false)
+                    Name = table.Column<string>(type: "varchar(50)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    active_cases = table.Column<int>(type: "int", nullable: false),
-                    new_cases = table.Column<int>(type: "int", nullable: false),
-                    new_deaths = table.Column<int>(type: "int", nullable: false),
-                    total_cases = table.Column<int>(type: "int", nullable: false),
-                    total_deaths = table.Column<int>(type: "int", nullable: false),
-                    total_recovered = table.Column<int>(type: "int", nullable: false),
-                    last_update = table.Column<DateTime>(type: "datetime", nullable: false)
+                    ActiveCases = table.Column<int>(type: "int", nullable: false),
+                    NewCases = table.Column<int>(type: "int", nullable: false),
+                    NewDeaths = table.Column<int>(type: "int", nullable: false),
+                    TotalCases = table.Column<int>(type: "int", nullable: false),
+                    TotalDeaths = table.Column<int>(type: "int", nullable: false),
+                    TotalRecovered = table.Column<int>(type: "int", nullable: false),
+                    LastUpdate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
