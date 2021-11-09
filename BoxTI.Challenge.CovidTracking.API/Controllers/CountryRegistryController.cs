@@ -2,6 +2,7 @@
 using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
 using BoxTI.Challenge.CovidTracking.Services.CSVService;
 using BoxTI.Challenge.CovidTracking.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// </summary>
         /// <returns>ActionResult</returns>
         [HttpGet("saveCountriesRegistry")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> SaveCountriesRegistry()
         {
             try
@@ -56,6 +58,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// </summary>
         /// <returns>Lista de Objetos CountryRegistry</returns>
         [HttpGet("getOrderedActiveCases")]
+        [Authorize]
         public async Task<IActionResult> GetOrderedActiveCases()
         {
             try
@@ -74,6 +77,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// </summary>
         /// <returns>Lista de Objetos CountryRegistry</returns>
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Get()
         {
             try
@@ -94,6 +98,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// <param name="id"></param>
         /// <returns>Objeto CountryRegistry</returns>
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -130,6 +135,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// <param name="countryRegistry"></param>
         /// <returns>ActionResult</returns>
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Put(int id, CountryRegistry countryRegistry)
         {
             if (id != countryRegistry.Id)
@@ -156,6 +162,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// <param name="id"></param>
         /// <returns>ActionResult</returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var cr = await _baseService.GetById(id);
@@ -184,6 +191,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// <param name="id"></param>
         /// <returns>String</returns>
         [HttpGet("exportCountryRegistryToCsv/{id}")]
+        [Authorize]
         public async Task<IActionResult> ExportCountryRegistryToCsv(int id)
         {
             try

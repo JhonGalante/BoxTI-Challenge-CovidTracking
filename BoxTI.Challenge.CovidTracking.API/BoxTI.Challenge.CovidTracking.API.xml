@@ -70,5 +70,35 @@
             <param name="id"></param>
             <returns>String</returns>
         </member>
+        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.UserController.Login(BoxTI.Challenge.CovidTracking.Models.DTOs.LoginDTO)">
+            <summary>
+            Realizar login no sistema
+            </summary>
+            <remarks>
+                Exemplo de request:
+                    POST api/User/login
+                    {
+                        "username": "jhongalante",
+                        "password": "123"
+                    }
+            </remarks>
+            <param name="model"></param>
+            <returns>Retorna informações do usuário e token</returns>
+        </member>
+        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.UserController.CreateUser(BoxTI.Challenge.CovidTracking.Models.DTOs.LoginDTO)">
+            <summary>
+            Criação de novo usuário
+            </summary>
+            <remarks>
+                Exemplo de request:
+                    POST api/User/createUser
+                    {
+                        "username": "jhongalante",
+                        "password": "123"
+                    }
+            </remarks>
+            <param name="model"></param>
+            <returns>ActionResult</returns>
+        </member>
     </members>
 </doc>

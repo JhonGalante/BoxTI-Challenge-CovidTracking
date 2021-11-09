@@ -1,6 +1,7 @@
 ﻿using BoxTI.Challenge.CovidTracking.Data.Mappings;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,15 @@ namespace BoxTI.Challenge.CovidTracking.Data.Context
 {
     public class MySqlContext : DbContext
     {
-        private readonly string stringConnection;
-        public MySqlContext(DbContextOptions<MySqlContext> options) : base(options)
+        private readonly IConfiguration _configuration;
+
+        public MySqlContext(DbContextOptions<MySqlContext> options, IConfiguration configuration) : base(options)
         {
-            stringConnection = "Server=localhost;Port=3306;Database=covidregistrydb;Uid=root;Pwd=root;charset=utf8;";
+            _configuration = configuration;
         }
 
         public DbSet<CountryRegistry> CountryRegistries { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,7 +32,7 @@ namespace BoxTI.Challenge.CovidTracking.Data.Context
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseMySql(stringConnection, ServerVersion.AutoDetect(stringConnection));
+            optionsBuilder.UseMySql(_configuration.GetConnectionString("MySQLConnection"), ServerVersion.AutoDetect(_configuration.GetConnectionString("MySQLConnection")));
         }
     }
 }
