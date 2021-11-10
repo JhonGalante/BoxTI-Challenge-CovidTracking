@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.Services", "BoxTI.Challenge.CovidTracking.Services\BoxTI.Challenge.CovidTracking.Services.csproj", "{0DEA9140-C4F0-41AA-9A7D-1C6AC9338C8E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2382BF5E-DCD7-4E91-B5CD-A0DB68DD5E6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxTI.Challenge.CovidTracking.UnitTest", "BoxTI.Challenge.CovidTracking.UnitTest\BoxTI.Challenge.CovidTracking.UnitTest.csproj", "{6C04458B-36E7-475B-833C-749779AF89B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{0DEA9140-C4F0-41AA-9A7D-1C6AC9338C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEA9140-C4F0-41AA-9A7D-1C6AC9338C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEA9140-C4F0-41AA-9A7D-1C6AC9338C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C04458B-36E7-475B-833C-749779AF89B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C04458B-36E7-475B-833C-749779AF89B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C04458B-36E7-475B-833C-749779AF89B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C04458B-36E7-475B-833C-749779AF89B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C04458B-36E7-475B-833C-749779AF89B1} = {2382BF5E-DCD7-4E91-B5CD-A0DB68DD5E6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C303CC9F-C03E-4217-8F8A-3E7F4236A7EC}
