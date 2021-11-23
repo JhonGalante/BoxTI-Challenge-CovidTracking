@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-BoxTI.Challenge.CovidTracking.HostedService-B2BCFBA4-F35F-4AD2-A4FB-FACF751A1F90</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.20" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BoxTI.Challenge.CovidTracking.Services\BoxTI.Challenge.CovidTracking.Services.csproj" />
+  </ItemGroup>
+</Project>

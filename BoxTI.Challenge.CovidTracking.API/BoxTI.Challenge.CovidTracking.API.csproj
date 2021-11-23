@@ -33,5 +33,9 @@
     <ProjectReference Include="..\BoxTI.Challenge.CovidTracking.Services\BoxTI.Challenge.CovidTracking.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="HostedService\" />
+  </ItemGroup>
+
 
 </Project>

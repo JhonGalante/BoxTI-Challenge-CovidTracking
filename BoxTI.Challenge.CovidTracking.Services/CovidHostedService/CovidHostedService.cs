@@ -1,30 +1,26 @@
-﻿using BoxTI.Challenge.CovidTracking.Data.Repository;
-using BoxTI.Challenge.CovidTracking.Models.Entities;
+﻿using BoxTI.Challenge.CovidTracking.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace BoxTI.Challenge.CovidTracking.Services.Services
+namespace BoxTI.Challenge.CovidTracking.Services.CovidHostedService
 {
-    public class CovidService : ICovidService
+    public class CovidHostedService : ICovidHostedService
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly string covidAPI;
         private readonly List<string> countries;
-        private readonly IBaseService<CountryRegistry> _baseService;
-        private readonly ICountryRegistryRepository _crRepo;
 
-        public CovidService(IHttpClientFactory clientFactory, IBaseService<CountryRegistry> baseService, ICountryRegistryRepository crRepo)
+        public CovidHostedService(IHttpClientFactory clientFactory)
         {
             _clientFactory = clientFactory;
             covidAPI = "https://covid-19-tracking.p.rapidapi.com/v1";
             countries = new List<string> { "Brazil", "Japan", "Netherlands", "Nigeria", "Australia", "World" };
-            _baseService = baseService;
-            _crRepo = crRepo;
         }
 
         public async Task<JArray> getCountryCovidRegistry()
@@ -50,8 +46,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
             }
         }
 
-
-        public async Task<string> SaveCountriesRegistry()
+        public async Task<string> UpdateCountriesRegistry(DbContext context)
         {
             var count = 0;
             var registries = await getCountryCovidRegistry();
@@ -60,21 +55,23 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
             {
                 var registry = registries.SelectToken($"[?(@.Country_text == '{country}')]");
 
-                if (_crRepo.GetByName(registry["Country_text"].ToString()) == null)
-                { 
-                    await _baseService.Add(
+                if (context.Set<CountryRegistry>().FindAsync(registry["Country_text"].ToString()) == null)
+                {
+                    context.Set<CountryRegistry>().Update(
                         new CountryRegistry
-                            {
-                                Name = registry["Country_text"].ToString(),
-                                ActiveCases = FormatStringToInt(registry["Active Cases_text"].ToString()),
-                                LastUpdate = DateTime.Parse(registry["Last Update"].ToString()),
-                                NewCases = FormatStringToInt(registry["New Cases_text"].ToString()),
-                                NewDeaths = FormatStringToInt(registry["New Deaths_text"].ToString()),
-                                TotalCases = FormatStringToInt(registry["Total Cases_text"].ToString()),
-                                TotalRecovered = FormatStringToInt(registry["Total Recovered_text"].ToString()),
-                                TotalDeaths = FormatStringToInt(registry["Total Deaths_text"].ToString()),
-                            }
+                        {
+                            Name = registry["Country_text"].ToString(),
+                            ActiveCases = FormatStringToInt(registry["Active Cases_text"].ToString()),
+                            LastUpdate = DateTime.Parse(registry["Last Update"].ToString()),
+                            NewCases = FormatStringToInt(registry["New Cases_text"].ToString()),
+                            NewDeaths = FormatStringToInt(registry["New Deaths_text"].ToString()),
+                            TotalCases = FormatStringToInt(registry["Total Cases_text"].ToString()),
+                            TotalRecovered = FormatStringToInt(registry["Total Recovered_text"].ToString()),
+                            TotalDeaths = FormatStringToInt(registry["Total Deaths_text"].ToString()),
+                        }
                     );
+
+                    context.SaveChanges();
 
                     count++;
                 }

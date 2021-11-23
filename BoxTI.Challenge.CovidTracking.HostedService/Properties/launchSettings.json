@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "BoxTI.Challenge.CovidTracking.HostedService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
