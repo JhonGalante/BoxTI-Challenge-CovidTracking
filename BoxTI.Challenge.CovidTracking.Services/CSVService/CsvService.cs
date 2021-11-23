@@ -11,7 +11,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.CSVService
 {
     public class CsvService : ICsvService
     {
-        public async Task<string> exportCountriesRegistryToCsv(CountryRegistry countryToExport)
+        public async Task<string> ExportCountriesRegistryToCsv(CountryRegistry countryToExport)
         {
             var path = Path.Combine(AppContext.BaseDirectory, $"{countryToExport.Name}-registry-export.csv");
             var crList = new List<CountryRegistry> { countryToExport };

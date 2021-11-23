@@ -6,6 +6,6 @@ namespace BoxTI.Challenge.CovidTracking.Services.HashService
 {
     public interface IHashService
     {
-        string CalculaHash(string Senha);
+        string CalculateHash(string Senha);
     }
 }

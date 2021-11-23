@@ -21,7 +21,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.UserServices
             var user = await _userRepo.CreateUser(new User
             {
                 Username = username,
-                Password = _hashService.CalculaHash(password),
+                Password = _hashService.CalculateHash(password),
                 Role = "comum"
             });
            
@@ -30,7 +30,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.UserServices
 
         public User GetUser(string username, string password)
         {
-            return _userRepo.Get(username, _hashService.CalculaHash(password));
+            return _userRepo.Get(username, _hashService.CalculateHash(password));
         }
     }
 }

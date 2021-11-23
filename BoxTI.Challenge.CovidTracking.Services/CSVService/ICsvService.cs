@@ -9,6 +9,6 @@ namespace BoxTI.Challenge.CovidTracking.Services.CSVService
 {
     public interface ICsvService
     {
-        Task<string> exportCountriesRegistryToCsv(CountryRegistry countryToExport);
+        Task<string> ExportCountriesRegistryToCsv(CountryRegistry countryToExport);
     }
 }

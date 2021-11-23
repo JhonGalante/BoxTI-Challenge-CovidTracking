@@ -16,7 +16,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.CountryRegistryService
             _repo = repo;
         }
 
-        public async Task<IList<dynamic>> getOrderedByActiveCases()
+        public async Task<IList<dynamic>> GetOrderedByActiveCases()
         {
             return await _repo.GetOrderedByActiveCases();
         }

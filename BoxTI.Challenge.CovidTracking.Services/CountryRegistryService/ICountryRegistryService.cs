@@ -8,6 +8,6 @@ namespace BoxTI.Challenge.CovidTracking.Services.CountryRegistryService
 {
     public interface ICountryRegistryService
     {
-        Task<IList<dynamic>> getOrderedByActiveCases();
+        Task<IList<dynamic>> GetOrderedByActiveCases();
     }
 }

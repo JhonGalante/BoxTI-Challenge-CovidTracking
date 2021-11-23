@@ -10,7 +10,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
 {
     public interface ICovidService
     {
-        Task<JArray> getCountryCovidRegistry();
+        Task<JArray> GetCountryCovidRegistry();
         Task<string> SaveCountriesRegistry();
     }
 }

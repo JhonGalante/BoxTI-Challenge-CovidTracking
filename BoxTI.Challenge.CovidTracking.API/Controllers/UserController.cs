@@ -41,7 +41,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// <param name="model"></param>
         /// <returns>Retorna informações do usuário e token</returns>
         [HttpPost]
-        [Route("login")]
+        [Route("Login")]
         [AllowAnonymous]
         public async Task<ActionResult<dynamic>> Login([FromBody] LoginDTO model)
         {

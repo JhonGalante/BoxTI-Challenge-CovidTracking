@@ -23,7 +23,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.CovidHostedService
             countries = new List<string> { "Brazil", "Japan", "Netherlands", "Nigeria", "Australia", "World" };
         }
 
-        public async Task<JArray> getCountryCovidRegistry()
+        public async Task<JArray> GetCountryCovidRegistry()
         {
             var client = _clientFactory.CreateClient();
             var request = new HttpRequestMessage
@@ -49,7 +49,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.CovidHostedService
         public async Task<string> UpdateCountriesRegistry(DbContext context)
         {
             var count = 0;
-            var registries = await getCountryCovidRegistry();
+            var registries = await GetCountryCovidRegistry();
 
             foreach (var country in countries)
             {

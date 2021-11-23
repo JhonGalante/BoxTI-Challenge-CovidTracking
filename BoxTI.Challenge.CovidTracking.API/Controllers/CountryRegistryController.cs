@@ -36,7 +36,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// no banco de dados
         /// </summary>
         /// <returns>ActionResult</returns>
-        [HttpGet("saveCountriesRegistry")]
+        [HttpGet("SaveCountriesRegistry")]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> SaveCountriesRegistry()
         {
@@ -57,13 +57,13 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// de ActiveCases
         /// </summary>
         /// <returns>Lista de Objetos CountryRegistry</returns>
-        [HttpGet("getOrderedActiveCases")]
+        [HttpGet("GetOrderedActiveCases")]
         [Authorize]
         public async Task<IActionResult> GetOrderedActiveCases()
         {
             try
             {
-                return Ok(await _crService.getOrderedByActiveCases());
+                return Ok(await _crService.GetOrderedByActiveCases());
             }
             catch (Exception ex)
             {
@@ -190,7 +190,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns>String</returns>
-        [HttpGet("exportCountryRegistryToCsv/{id}")]
+        [HttpGet("ExportCountryRegistryToCsv/{id}")]
         [Authorize]
         public async Task<IActionResult> ExportCountryRegistryToCsv(int id)
         {
@@ -200,7 +200,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
                 if(cr == null)
                     return NotFound();
                 
-                return Ok(await _csvService.exportCountriesRegistryToCsv(cr));
+                return Ok(await _csvService.ExportCountriesRegistryToCsv(cr));
 
             }
             catch (Exception ex)

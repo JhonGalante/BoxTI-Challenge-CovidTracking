@@ -27,7 +27,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
             _crRepo = crRepo;
         }
 
-        public async Task<JArray> getCountryCovidRegistry()
+        public async Task<JArray> GetCountryCovidRegistry()
         {
             var client = _clientFactory.CreateClient();
             var request = new HttpRequestMessage
@@ -54,7 +54,7 @@ namespace BoxTI.Challenge.CovidTracking.Services.Services
         public async Task<string> SaveCountriesRegistry()
         {
             var count = 0;
-            var registries = await getCountryCovidRegistry();
+            var registries = await GetCountryCovidRegistry();
 
             foreach (var country in countries)
             {
