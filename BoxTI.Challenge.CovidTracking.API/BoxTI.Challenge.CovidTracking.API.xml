@@ -70,7 +70,7 @@
             <param name="id"></param>
             <returns>String</returns>
         </member>
-        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.UserController.Login(BoxTI.Challenge.CovidTracking.Models.DTOs.LoginDTO)">
+        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.UserController.Login(BoxTI.Challenge.CovidTracking.API.Models.Models.Login)">
             <summary>
             Realizar login no sistema
             </summary>
@@ -85,7 +85,7 @@
             <param name="model"></param>
             <returns>Retorna informações do usuário e token</returns>
         </member>
-        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.UserController.CreateUser(BoxTI.Challenge.CovidTracking.Models.DTOs.LoginDTO)">
+        <member name="M:BoxTI.Challenge.CovidTracking.API.Controllers.UserController.CreateUser(BoxTI.Challenge.CovidTracking.API.Models.Models.Login)">
             <summary>
             Criação de novo usuário
             </summary>

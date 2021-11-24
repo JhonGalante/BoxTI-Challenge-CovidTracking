@@ -1,10 +1,13 @@
-﻿using BoxTI.Challenge.CovidTracking.Models.Entities;
+﻿using AutoMapper;
+using BoxTI.Challenge.CovidTracking.API.Models.Models;
+using BoxTI.Challenge.CovidTracking.Models.Entities;
 using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
 using BoxTI.Challenge.CovidTracking.Services.CSVService;
 using BoxTI.Challenge.CovidTracking.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.API.Controllers
@@ -17,16 +20,19 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         private readonly IBaseService<CountryRegistry> _baseService;
         private readonly ICountryRegistryService _crService;
         private readonly ICsvService _csvService;
+        private readonly IMapper _mapper;
 
         public CountryRegistryController(ICovidService serviceCovid, 
                                          ICountryRegistryService crService, 
                                          IBaseService<CountryRegistry> baseService,
-                                         ICsvService csvService)
+                                         ICsvService csvService,
+                                         IMapper mapper)
         {
             _serviceCovid = serviceCovid;
             _baseService = baseService;
             _crService = crService;
             _csvService = csvService;
+            _mapper = mapper;
         }
 
         // GET: api/CountryRegistry/saveCountriesRegistry
@@ -82,7 +88,13 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         {
             try
             {
-                return Ok(await _baseService.Get());
+                List<CountryRegistryResult> results = new List<CountryRegistryResult>();
+                foreach (var result in await _baseService.Get())
+                {
+                    results.Add(_mapper.Map<CountryRegistryResult>(result));
+                }
+
+                return Ok(results);
             }
             catch (Exception ex)
             {
@@ -103,7 +115,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         {
             try
             {
-                return Ok(await _baseService.GetById(id));
+                return Ok(_mapper.Map<CountryRegistryResult>(await _baseService.GetById(id)));
             }
             catch (Exception ex)
             {

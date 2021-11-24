@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BoxTI.Challenge.CovidTracking.Models.DTOs
+namespace BoxTI.Challenge.CovidTracking.API.Models.Models
 {
-    public class UserDTO
+    public class LoginResult
     {
         public int Id { get; set; }
         public string Username { get; set; }

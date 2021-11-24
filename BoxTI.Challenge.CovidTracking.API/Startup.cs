@@ -1,10 +1,10 @@
 using AutoMapper;
 using BoxTI.Challenge.CovidTracking.API.Auth;
+using BoxTI.Challenge.CovidTracking.API.Models.Models;
 using BoxTI.Challenge.CovidTracking.Data.Context;
 using BoxTI.Challenge.CovidTracking.Data.Dapper;
 using BoxTI.Challenge.CovidTracking.Data.Repository;
 using BoxTI.Challenge.CovidTracking.Data.Repository.UserRepository;
-using BoxTI.Challenge.CovidTracking.Models.DTOs;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
 using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
 using BoxTI.Challenge.CovidTracking.Services.CSVService;
@@ -64,7 +64,8 @@ namespace BoxTI.Challenge.CovidTracking.API
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.CreateMap<User, UserDTO>().ReverseMap();
+                mc.CreateMap<User, LoginResult>().ReverseMap();
+                mc.CreateMap<CountryRegistry, CountryRegistryResult>().ReverseMap();
             });
 
             var mapper = mappingConfig.CreateMapper();

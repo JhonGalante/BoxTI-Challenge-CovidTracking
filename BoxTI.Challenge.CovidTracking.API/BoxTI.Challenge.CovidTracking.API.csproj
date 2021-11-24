@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BoxTI.Challenge.CovidTracking.Api.Models\BoxTI.Challenge.CovidTracking.API.Models.csproj" />
     <ProjectReference Include="..\BoxTI.Challenge.CovidTracking.Data\BoxTI.Challenge.CovidTracking.Data.csproj" />
     <ProjectReference Include="..\BoxTI.Challenge.CovidTracking.Models\BoxTI.Challenge.CovidTracking.Models.csproj" />
     <ProjectReference Include="..\BoxTI.Challenge.CovidTracking.Services\BoxTI.Challenge.CovidTracking.Services.csproj" />

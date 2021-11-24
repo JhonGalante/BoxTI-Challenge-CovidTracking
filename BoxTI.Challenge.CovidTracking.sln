@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.API", "BoxTI.Challenge.CovidTracking.API\BoxTI.Challenge.CovidTracking.API.csproj", "{01F270D5-22B9-4B25-83E3-6B778DE935E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.Client", "BoxTI.Challenge.CovidTracking.Client\BoxTI.Challenge.CovidTracking.Client.csproj", "{18B524EF-B029-4F08-B5DC-0E56CA69497A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.API.Client", "BoxTI.Challenge.CovidTracking.Client\BoxTI.Challenge.CovidTracking.API.Client.csproj", "{18B524EF-B029-4F08-B5DC-0E56CA69497A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.Models", "BoxTI.Challenge.CovidTracking.Models\BoxTI.Challenge.CovidTracking.Models.csproj", "{DF79D3AE-A5FF-4ED9-AE1F-D59C25501F61}"
 EndProject
@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.Services", "BoxTI.Challenge.CovidTracking.Services\BoxTI.Challenge.CovidTracking.Services.csproj", "{0DEA9140-C4F0-41AA-9A7D-1C6AC9338C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxTI.Challenge.CovidTracking.HostedService", "BoxTI.Challenge.CovidTracking.HostedService\BoxTI.Challenge.CovidTracking.HostedService.csproj", "{15404D31-E64E-4536-8408-149E36F770A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoxTI.Challenge.CovidTracking.HostedService", "BoxTI.Challenge.CovidTracking.HostedService\BoxTI.Challenge.CovidTracking.HostedService.csproj", "{15404D31-E64E-4536-8408-149E36F770A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxTI.Challenge.CovidTracking.API.Models", "BoxTI.Challenge.CovidTracking.Api.Models\BoxTI.Challenge.CovidTracking.API.Models.csproj", "{06DBEA96-5CE5-40CE-A82D-0C1F59B163C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{15404D31-E64E-4536-8408-149E36F770A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15404D31-E64E-4536-8408-149E36F770A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15404D31-E64E-4536-8408-149E36F770A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06DBEA96-5CE5-40CE-A82D-0C1F59B163C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06DBEA96-5CE5-40CE-A82D-0C1F59B163C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06DBEA96-5CE5-40CE-A82D-0C1F59B163C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06DBEA96-5CE5-40CE-A82D-0C1F59B163C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

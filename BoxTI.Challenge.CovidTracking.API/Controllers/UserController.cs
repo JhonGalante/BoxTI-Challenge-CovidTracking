@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using BoxTI.Challenge.CovidTracking.API.Auth;
-using BoxTI.Challenge.CovidTracking.Data.Repository.UserRepository;
-using BoxTI.Challenge.CovidTracking.Models.DTOs;
-using BoxTI.Challenge.CovidTracking.Models.Entities;
+using BoxTI.Challenge.CovidTracking.API.Models.Models;
 using BoxTI.Challenge.CovidTracking.Services.UserServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Threading.Tasks;
 
 namespace BoxTI.Challenge.CovidTracking.API.Controllers
@@ -43,7 +40,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         [HttpPost]
         [Route("Login")]
         [AllowAnonymous]
-        public async Task<ActionResult<dynamic>> Login([FromBody] LoginDTO model)
+        public async Task<ActionResult<dynamic>> Login([FromBody] Login model)
         {
             //Recupera o usuário
             var user = _userService.GetUser(model.Username, model.Password);
@@ -60,7 +57,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
             //Retorna os dados
             return new
             {
-                user = _mapper.Map<UserDTO>(user),
+                user = _mapper.Map<LoginResult>(user),
                 token = token
             };
         }
@@ -81,7 +78,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         [HttpPost]
         [Route("createUser")]
         [AllowAnonymous]
-        public async Task<ActionResult> CreateUser([FromBody] LoginDTO model)
+        public async Task<ActionResult> CreateUser([FromBody] Login model)
         {
             var user = await _userService.CreateUser(model.Username, model.Password);
 
