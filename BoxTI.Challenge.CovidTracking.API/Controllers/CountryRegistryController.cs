@@ -2,8 +2,6 @@
 using BoxTI.Challenge.CovidTracking.API.Models.Models;
 using BoxTI.Challenge.CovidTracking.Models.Entities;
 using BoxTI.Challenge.CovidTracking.Services.CountryRegistryService;
-using BoxTI.Challenge.CovidTracking.Services.CSVService;
-using BoxTI.Challenge.CovidTracking.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,22 +14,13 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
     [ApiController]
     public class CountryRegistryController : ControllerBase
     {
-        private readonly ICovidService _serviceCovid;
-        private readonly IBaseService<CountryRegistry> _baseService;
         private readonly ICountryRegistryService _crService;
-        private readonly ICsvService _csvService;
         private readonly IMapper _mapper;
 
-        public CountryRegistryController(ICovidService serviceCovid, 
-                                         ICountryRegistryService crService, 
-                                         IBaseService<CountryRegistry> baseService,
-                                         ICsvService csvService,
+        public CountryRegistryController(ICountryRegistryService crService,
                                          IMapper mapper)
         {
-            _serviceCovid = serviceCovid;
-            _baseService = baseService;
             _crService = crService;
-            _csvService = csvService;
             _mapper = mapper;
         }
 
@@ -48,7 +37,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         {
             try
             {
-                return Ok(await _serviceCovid.SaveCountriesRegistry());
+                return Ok(await _crService.SaveCountriesRegistry());
             }
             catch (Exception ex)
             {
@@ -89,7 +78,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
             try
             {
                 List<CountryRegistryResult> results = new List<CountryRegistryResult>();
-                foreach (var result in await _baseService.Get())
+                foreach (var result in await _crService.GetAll())
                 {
                     results.Add(_mapper.Map<CountryRegistryResult>(result));
                 }
@@ -98,7 +87,6 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
@@ -115,7 +103,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         {
             try
             {
-                return Ok(_mapper.Map<CountryRegistryResult>(await _baseService.GetById(id)));
+                return Ok(_mapper.Map<CountryRegistryResult>(await _crService.GetById(id)));
             }
             catch (Exception ex)
             {
@@ -157,7 +145,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
 
             try
             {
-                await _baseService.Update(countryRegistry);
+                await _crService.Update(countryRegistry);
             }
             catch (Exception ex)
             {
@@ -177,7 +165,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            var cr = await _baseService.GetById(id);
+            var cr = await _crService.GetById(id);
 
             if(cr == null)
             {
@@ -186,7 +174,7 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
 
             try
             {
-                await _baseService.Delete(cr);
+                await _crService.Delete(cr);
                 return Ok();
             }
             catch (Exception ex)
@@ -208,11 +196,11 @@ namespace BoxTI.Challenge.CovidTracking.API.Controllers
         {
             try
             {
-                var cr = await _baseService.GetById(id);
+                var cr = await _crService.GetById(id);
                 if(cr == null)
                     return NotFound();
                 
-                return Ok(await _csvService.ExportCountriesRegistryToCsv(cr));
+                return Ok(await _crService.ExportCountriesRegistryToCsv(cr));
 
             }
             catch (Exception ex)
